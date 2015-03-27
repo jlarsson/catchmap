@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jlarsson/catchmap.svg)](https://travis-ci.org/jlarsson/catchmap)
+
 # catchmap
 
 Utility for removing tedious error checking.
