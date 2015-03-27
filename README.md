@@ -25,14 +25,13 @@ In short, ```catchmap(...errors)``` creates a ```function (err) {}``` that will 
 ```catchmap(...)``` takes care of checking error types and ```Error.code``` for you.
 
 ```js
-// Clear and readable
+// Precise and consise
 readFile()
   .then(JSON.parse)
   .catch(catchmap('ENOENT',SyntaxError))
   .then(function (){
     // do some business
   })
-  ...
 ```
 
 ```js
@@ -52,33 +51,32 @@ readFile()
   .then(function (){
     // do some business
   })
-  ...
 
 ```
 
 Errors can also be mapped to values using ```catchmap(...).to(value)```.
+
+Vanilla ```catchmap(...)``` is functionally equivalent to ```catchmap(...).to(undefined)```.
+
 ```js
 somePromise()
   .catch(catchmap(Error).to(123))
   .then(function (v){
     // if Error was thrown, then v === 123
   })
-
 ```
 
 
-Optimize it a bit by sharing instances of ```catchmap```.
+Optimize it a bit by sharing instances of ```catchmap```. This is highly recommended since ```catchmap``` is a bit heavy on creating closures.
 
 ```js
+var allowAcceptableError = catchmap('ENOENT', SyntaxError).to({})
 
-var allowAcceptableError = catchmap('ENOENT', SyntaxError)
-// allowAcceptableError is equivalent with
-// catchmap('ENOENT',SyntaxError).to(undefined)
-
-somePromise()
-  .catch(allowAcceptableError)
-  .then(function (){
-    // do some business
-  })
-  ...
+function getDownToBusiness(){
+  return somePromise()
+    .catch(allowAcceptableError)
+    .then(function (){
+      // do some business
+    })
+}
 ```
