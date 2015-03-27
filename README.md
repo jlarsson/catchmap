@@ -63,7 +63,7 @@ Optimize it a bit by sharing instances of ```catchmap```.
 
 var allowAcceptableError = catchmap('ENOENT', SyntaxError)
 // allowAcceptableError is equivalent with
-// catchmap('ENOENT',GizmoError).to(undefined)
+// catchmap('ENOENT',SyntaxError).to(undefined)
 
 somePromise()
   .catch(allowAcceptableError)
