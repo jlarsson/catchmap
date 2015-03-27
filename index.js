@@ -10,7 +10,7 @@ function catchmap(matchers) {
     .map(createMatcher)
 
   var cm = function(matchers, err) {
-    return matchers.some(isMatch.bind(null, err)) ? undefined : thr()
+    return (err instanceof Error) && matchers.some(isMatch.bind(null, err)) ? undefined : thr()
 
     function thr(){
       throw err

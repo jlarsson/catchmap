@@ -53,6 +53,15 @@ describe('catchmap', function() {
       .then(done)
       .catch(done)
   })
+  it('catchmap() only catches Errors', function (done){
+    Promise.reject('error')
+      .catch(catchmap(Error))
+      .then(done.bind(null,assert.fail.bind(null,'string exception should not be caught')))
+      .catch(assert.equal.bind(null,'error'))
+      .then(done)
+      .catch(done)
+  })
+
   it('catchmap(...).to(<value>) settles a value', function (done){
 
     Promise.reject(makeError(SyntaxError))

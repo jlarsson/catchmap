@@ -14,16 +14,29 @@ Utility for removing tedious error checking.
 
 Works great with promises and blends nicely with co and koa.
 
-In short, ```catchmap(...errors)``` creates a ```function (err) {}``` that will swallow matching errors and re-throw the rest.
+In short, ```catchmap(...errors)``` creates a ```function (err) {}``` that will devour matching errors and re-throw the rest.
 
 ## Example
-Error checking with promises can be hard on the eyes.
+
+```catchmap(...)``` takes care of checking error types and ```Error.code``` for you.
+
+```js
+// Clear and readable
+readFile()
+  .then(JSON.parse)
+  .catch(catchmap('ENOENT',SyntaxError))
+  .then(function (){
+    // do some business
+  })
+  ...
+```
 
 ```js
 // Yawn, do I have to read all this error checking?
 readFile()
   .then(JSON.parse)
   .catch(function (err){
+    // This code is hard on the eyes
     if (err.code === 'ENOENT'){
       return
     }
@@ -37,19 +50,6 @@ readFile()
   })
   ...
 
-```
-
-```catchmap(...)``` takes care of checking error types and ```Error.code``` for you.
-
-```js
-// Clear and readable
-readFile()
-  .then(JSON.parse)
-  .catch(catchmap('ENOENT',SyntaxError))
-  .then(function (){
-    // do some business
-  })
-  ...
 ```
 
 Errors can also be mapped to values using ```catchmap(...).to(value)```.
