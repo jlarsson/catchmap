@@ -1,7 +1,13 @@
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/catchmap)
-[![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/jlarsson/catchmap)
-[![Build Status](https://travis-ci.org/jlarsson/catchmap.svg)](https://travis-ci.org/jlarsson/catchmap)
+[![npm][npm-image]][npm-url]
+[![travis][travis-image]][travis-url]
+[![npm][license-image]][license-url]
 
+[travis-image]: https://img.shields.io/travis/jlarsson/catchmap.svg?style=flat
+[travis-url]: https://travis-ci.org/jlarsson/catchmap
+[npm-image]: https://img.shields.io/npm/v/catchmap.svg?style=flat
+[npm-url]: https://npmjs.org/package/catchmap
+[license-image]: https://img.shields.io/npm/l/catchmap.svg?style=flat
+[license-url]: LICENSE
 # catchmap
 
 Utility for removing tedious error checking.
