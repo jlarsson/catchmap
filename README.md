@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/catchmap)
+[![CocoaPods](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://www.npmjs.com/package/catchmap)
 [![Build Status](https://travis-ci.org/jlarsson/catchmap.svg)](https://travis-ci.org/jlarsson/catchmap)
 
 # catchmap
